@@ -34,10 +34,10 @@ def reproject(src_file, dst_file, p_width, p_height, epsg_to):
     tx = osr.CoordinateTransformation(src_srs, dst_srs)
 
     # 计算输出图像四个角点的坐标
-    (ulx, uly, _) = tx.TransformPoint(srs_trans[0], srs_trans[3])
-    (urx, ury, _) = tx.TransformPoint(srs_trans[0] + srs_trans[1] * x_size, srs_trans[3])
-    (llx, lly, _) = tx.TransformPoint(srs_trans[0], srs_trans[3] + srs_trans[5] * y_size)
-    (lrx, lry, _) = tx.TransformPoint(srs_trans[0] + srs_trans[1] * x_size + srs_trans[2] * y_size,
+    (uly, ulx, _) = tx.TransformPoint(srs_trans[0], srs_trans[3])
+    (ury, urx, _) = tx.TransformPoint(srs_trans[0] + srs_trans[1] * x_size, srs_trans[3])
+    (lly, llx, _) = tx.TransformPoint(srs_trans[0], srs_trans[3] + srs_trans[5] * y_size)
+    (lry, lrx, _) = tx.TransformPoint(srs_trans[0] + srs_trans[1] * x_size + srs_trans[2] * y_size,
                                       srs_trans[3] + srs_trans[4] * x_size + srs_trans[5] * y_size)
 
     min_x = min(ulx, urx, llx, lrx)
